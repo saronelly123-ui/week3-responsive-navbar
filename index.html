@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar | NellyUI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+
+  <nav class="bg-white shadow-sm">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-20 items-center justify-between">
+
+        <a href="#home" class="rounded-lg text-2xl font-bold text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          NellyUI
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden items-center gap-8 md:flex">
+          <a href="#home" class="rounded text-sm font-medium hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">Home</a>
+          <a href="#about" class="rounded text-sm font-medium hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">About</a>
+          <a href="#services" class="rounded text-sm font-medium hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">Services</a>
+          <a href="#contact" class="rounded text-sm font-medium hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">Contact</a>
+          <a href="#get-started" class="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            Get Started
+          </a>
+        </div>
+
+        <!-- Mobile hamburger button -->
+        <button id="menu-button" type="button"
+          class="rounded-lg p-2 text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 md:hidden"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu">
+          <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden space-y-1 pb-4 md:hidden">
+        <a href="#home" class="block rounded-lg px-3 py-2 hover:bg-indigo-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">Home</a>
+        <a href="#about" class="block rounded-lg px-3 py-2 hover:bg-indigo-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">About</a>
+        <a href="#services" class="block rounded-lg px-3 py-2 hover:bg-indigo-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">Services</a>
+        <a href="#contact" class="block rounded-lg px-3 py-2 hover:bg-indigo-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">Contact</a>
+        <a href="#get-started" class="block rounded-lg bg-indigo-600 px-3 py-2 text-center font-semibold text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home" class="mx-auto max-w-7xl px-6 py-20 text-center">
+    <p class="mb-3 font-semibold text-indigo-600">RESPONSIVE DESIGN</p>
+    <h1 class="mb-5 text-4xl font-bold tracking-tight sm:text-5xl">
+      Welcome to NellyUI
+    </h1>
+    <p class="mx-auto max-w-2xl text-lg leading-8 text-slate-600">
+      A simple responsive navigation bar built with Tailwind CSS utilities.
+      Resize your browser to test the mobile and desktop layouts.
+    </p>
+    <a href="#services" class="mt-8 inline-block rounded-lg bg-indigo-600 px-6 py-3 font-semibold text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+      Explore Services
+    </a>
+  </main>
+
+  <script>
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuButton.addEventListener("click", () => {
+      const isHidden = mobileMenu.classList.toggle("hidden");
+      menuButton.setAttribute("aria-expanded", String(!isHidden));
+      menuButton.setAttribute(
+        "aria-label",
+        isHidden ? "Open navigation menu" : "Close navigation menu"
+      );
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
+      });
+    });
+  </script>
+
+</body>
+</html>
